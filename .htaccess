@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
    RewriteEngine on
-   RewriteBase /www/TESEM/
+   RewriteBase /www_data/TESEM/
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
