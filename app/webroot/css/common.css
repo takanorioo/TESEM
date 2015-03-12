@@ -1,0 +1,28 @@
+body {
+  background-color: #f2f0f0;
+}
+
+.thumbnail {
+background-color: white;
+}
+
+.span3 {
+padding-top: 20px;
+}
+
+.thumbnail img {
+padding-top: 10px;
+}
+
+.thumbnail>img {
+width: 230px;
+}
+
+.bwWrapper {
+    position:relative;
+    display:block;
+}
+
+.center {
+    text-align: center;
+}
