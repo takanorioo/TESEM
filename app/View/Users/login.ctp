@@ -1,6 +1,6 @@
 
 <div class="container">
-  <img src="/<?php echo $base_dir;?>/img/logo.png" style="width: 250px;">
+  <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/logo.png" style="width: 250px;">
 </div>
 
 <!-- ここからログインヘッダーエリア -->
