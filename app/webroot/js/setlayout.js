@@ -34,7 +34,7 @@ $(window).load(function() {
         
 
         jQuery.ajax(
-            '/uml/api/setlayout/setlayout',
+            '/api/setlayout/setlayout',
                 {
                     dataType: 'json',
                     data: {
