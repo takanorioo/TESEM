@@ -1,6 +1,6 @@
 <div style="float: right;">
-	<h1 style="padding-left: 140px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_design_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Select Security Design Patterns</a></h1>
-	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_design_requirements/bind/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Bind Elements</a></h1>
+	<h1 style="padding-left: 140px;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Select Security Design Patterns</a></h1>
+	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/bind/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Bind Elements</a></h1>
 </div>
 
 <h3 style="padding-top: 50px;">▶ Selected Patterns of <span class = "red"> "<?php echo h($method['Method']['name']);?>"</span> process</h3>
@@ -19,7 +19,7 @@
 			<tr>
 				<td><?php echo $i + 1;?></td>
 				<td><?php echo h($security_design_requirement[$i]['Pattern']['name']);?></td>
-				<td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_design_requirements/delete/<?php echo h($security_design_requirement[$i]['SecurityDesignRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
+				<td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/delete/<?php echo h($security_design_requirement[$i]['SecurityDesignRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
 			</tr>	
 		<?php endfor; ?>
 
@@ -150,8 +150,8 @@
 	</table>
 
 <div style="float: right;">
-	<h1 style="padding-left: 160px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/sdr_model_script_data/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Create Model Script</a></h1>
-	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/sdr_testcasedata/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Create Test Script</a></h1>
+	<h1 style="padding-left: 160px;"><a href="<?php echo FULL_BASE_URL; ?>/element/sdr_model_script_data/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Create Model Script</a></h1>
+	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/element/sdr_testcasedata/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Create Test Script</a></h1>
 </div>
 
 

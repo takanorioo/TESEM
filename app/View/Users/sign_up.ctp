@@ -16,7 +16,7 @@
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center" style="margin-top: 30px;margin-left: 50px;">
-        <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/user/user_0.jpg" class="avatar img-circle img-thumbnail" >
+        <img src="<?php echo FULL_BASE_URL; ?>/img/user/user_0.jpg" class="avatar img-circle img-thumbnail" >
         <?php echo $this->Form->create('Upload', array('type'=>'file', 'enctype' => 'multipart/form-data')); ?>
 		<?php echo $this->Form->file('file_name', array('class' => 'text-center center-block well well-sm')) ?>
       </div>

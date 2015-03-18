@@ -1,6 +1,6 @@
 
 <div class="container">
-  <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/logo.png" style="width: 250px;">
+  <img src="<?php echo FULL_BASE_URL; ?>/img/logo.png" style="width: 250px;">
 </div>
 
 <!-- ここからログインヘッダーエリア -->
@@ -16,7 +16,7 @@
           </div>
           <div class="panel-body" >
             <div class="control-group" style="text-align: center;">
-              <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/facebook" class ="btn btn-primary" >Login With Facebook</a>
+              <a href="<?php echo FULL_BASE_URL; ?>/facebook" class ="btn btn-primary" >Login With Facebook</a>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="login-panel panel panel-default">
-          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/sign_up/">
+          <a href="<?php echo FULL_BASE_URL; ?>/sign_up/">
           <div class="panel-heading"style="background: #5cb85c;color: white;">
             <h3 class="panel-title">Sign UP</h3>
           </div>

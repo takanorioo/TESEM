@@ -149,7 +149,7 @@ $("#add_action").click(function(){
 
 
 <div style="float: right;">
-  <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img//kobashi.jpg" style="width: 80px;margin-right: 10px;" class="img-thumbnail">
+  <img src="<?php echo FULL_BASE_URL; ?>/img//kobashi.jpg" style="width: 80px;margin-right: 10px;" class="img-thumbnail">
   <div style="float: right;margin-top: 10px;width: 180px;">
     <span>Contributer :</span><br>
     <span>Takanori Kobashi</span><br>
@@ -279,7 +279,7 @@ $("#add_action").click(function(){
                         </td>
                         <td><?php echo $this->Form->input('PatternBehavior.pattern_element_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
                         </td>
-                        <td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/pattern/behabior_element_delete/<?php echo $behaviors_data['PatternBehavior']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+                        <td><a href="<?php echo FULL_BASE_URL; ?>/pattern/behabior_element_delete/<?php echo $behaviors_data['PatternBehavior']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
                         </td>
                       </tr>
                     <?php endfor; ?>
@@ -341,7 +341,7 @@ $("#add_action").click(function(){
                         </td>
                         <td><?php echo $this->Form->input('BehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
                         </td>
-                        <td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+                        <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
                         </td>
                       </tr>
                     <?php endfor; ?>
@@ -374,7 +374,7 @@ $("#add_action").click(function(){
 
   <div style="float: right;">
     <h1 style="padding-left: 280px;">
-      <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/add" class ="btn btn-primary">Add Pattern Elements</a>
+      <a href="<?php echo FULL_BASE_URL; ?>/patterns/add" class ="btn btn-primary">Add Pattern Elements</a>
     </h1>
   </div>
   <table class="table table-bordered">
@@ -389,8 +389,8 @@ $("#add_action").click(function(){
       <?php for($i = 0; $i < count($pattern['PatternElement']); $i++): ?>
         <tr>
           <td><?php echo $i + 1;?></td>
-          <td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/edit/<?php echo h($pattern['PatternElement'][$i]['id']);?>"><?php echo h($pattern['PatternElement'][$i]['element']);?></a></td>
-          <td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/delete/<?php echo h($pattern['PatternElement'][$i]['id']);?>"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
+          <td><a href="<?php echo FULL_BASE_URL; ?>/patterns/edit/<?php echo h($pattern['PatternElement'][$i]['id']);?>"><?php echo h($pattern['PatternElement'][$i]['element']);?></a></td>
+          <td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/patterns/delete/<?php echo h($pattern['PatternElement'][$i]['id']);?>"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
         </tr>
       <?php endfor; ?>
     </tboy>
