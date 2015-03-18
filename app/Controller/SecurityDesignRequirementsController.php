@@ -86,7 +86,7 @@ class SecurityDesignRequirementsController extends AppController
                 $this->SecurityDesignRequirement->commit();
             }
             
-            $this->Session->setFlash('You successfully Set Target Function.', 'default', array('class' => 'alert alert-success'));
+            $this->Session->setFlash('You successfully Select Security Design Pattern.', 'default', array('class' => 'alert alert-success'));
             $this->redirect(array('controller' => 'SecurityDesignRequirements', 'action' => 'bind', $method_id));
         }
     }
@@ -144,7 +144,7 @@ class SecurityDesignRequirementsController extends AppController
                 $this->SecurityDesignRequirement->commit();
             }
             
-            $this->Session->setFlash('You successfully Set Target Function.', 'default', array('class' => 'alert alert-success'));
+            $this->Session->setFlash('You successfully bind elements.', 'default', array('class' => 'alert alert-success'));
             $this->redirect(array('controller' => 'SecurityDesignRequirements', 'action' => 'table', $method_id));
         }
 
@@ -211,5 +211,33 @@ class SecurityDesignRequirementsController extends AppController
         $td_rowspan = count($security_design_requirement) * 2 + 2;
         $this->set('td_rowspan', $td_rowspan);
 
+    }
+
+
+    /**
+     * delete
+     * @param:
+     * @author: T.Kobashi
+     * @since: 1.0.0
+     */
+    public function delete($id = null)
+    {
+        //不正アクセス
+        if (!isset($id)) {
+            throw new BadRequestException();
+        }
+
+         // トランザクション処理始め
+        $this->SecurityDesignRequirement->begin();
+
+        if (!$this->SecurityDesignRequirement->delete($id)) {
+            $this->SecurityDesignRequirement->rollback();
+            throw new BadRequestException();
+        }
+
+        $this->SecurityDesignRequirement->commit();
+
+        $this->Session->setFlash('You successfully delete.', 'default', array('class' => 'alert alert-success'));
+        $this->redirect($this->referer());
     }
 }

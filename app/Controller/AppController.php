@@ -43,6 +43,10 @@ class AppController extends Controller
 
     function beforeFilter() {
 
+        if($this->viewPath == 'Errors'){
+            $this->layout = 'error';
+        }
+
 
         // 取り敢えず
         $this->set('title_for_layout', '');
@@ -55,10 +59,10 @@ class AppController extends Controller
         $this->me = $this->_getMe();
         $this->set('me', $this->me);
 
+
         $this->user = $this->getUser();
         $this->set('user', $this->user);
 
-        
         /*基本共通変数*/
         $this->base_dir = $this->_getBaseDir();
         $this->set('base_dir', $this->base_dir);
@@ -89,7 +93,7 @@ class AppController extends Controller
             $this->set('me', $this->me);
 
             //ユーザID取得
-            $user_id= $this->Auth->user('id');
+            $user_id= $this->me['User']['id'];
 
             // プロジェクト関連処理
             $projects = $this->Project->getProjects($user_id);
@@ -235,12 +239,15 @@ class AppController extends Controller
 
         $me = array();
         if ($this->Auth->loggedIn()) {
-            $me = $User->findByFacebookUserId($this->Auth->user('facebook_user_id'));
-        }
-        if (!empty($me)) {
+            $me = $User->findById($this->Auth->user('id'));
+
+            // Facebook Login
+            if(empty($me)) {
+                $me = $User->findByFacebookUserId($this->Auth->user('facebook_user_id'));
+                return $me['User'];
+            }
             return $me['User'];
         }
-        return $me;
     }
 
 

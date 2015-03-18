@@ -13,14 +13,12 @@
           <?php for($i = 0; $i < count($patterns); $i++): ?>
             <section class="entry document">
               <aside>
-                <a href="/accounts/profile/miratcan/">
-                  <img src="/<?php echo $base_dir;?>/img//kobashi.jpg">
-                </a>
+                  <img src="/<?php echo $base_dir;?>/img/user/user_<?php echo h($patterns[$i]['User']['id']);?>.jpg">
               </aside>
               <article>
                 <h3><a href="/<?php echo $base_dir;?>/patterns/detail/<?php echo h($patterns[$i]['Pattern']['id']);?>"><?php echo h($patterns[$i]['Pattern']['name']);?></a></h3>
-                <p style="float: right; padding: 10px;margin-top: -36px;color: gray;">created by : takanori kobashi</p>
-                <time><a href="<?php echo $base_dir;?>/patterns/detail/<?php echo h($patterns[$i]['Pattern']['id']);?>">Created : <?php echo h($patterns[$i]['Pattern']['created']);?></a></time>
+                <p style="float: right; padding: 10px;margin-top: -36px;color: gray;">created by : <?php echo h($patterns[$i]['User']['first_name']);?> <?php echo h($patterns[$i]['User']['last_name']);?></p>
+                <time><a href="/<?php echo $base_dir;?>/patterns/detail/<?php echo h($patterns[$i]['Pattern']['id']);?>">Created : <?php echo h($patterns[$i]['Pattern']['created']);?></a></time>
               </article>
             </section>
           <?php endfor; ?>

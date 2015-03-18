@@ -10,7 +10,7 @@
 class ApiSetLayoutController extends AppController
 {
     public $name = 'ApiSetLayout';
-    public $uses = array('Label','PatternElement','Behavior','BehaviorRelations');
+    public $uses = array('Label','PatternElement','Behavior','BehaviorRelations','PatternBehavior','PatternBehaviorRelations');
     public $autoRender= false;
     public $autoLayout = false;
 
@@ -57,7 +57,7 @@ class ApiSetLayoutController extends AppController
     }
 
     /**
-     * setlayout
+     * setPatternlayout
      * @param:
      * @author: T.Kobashi
      * @since: 1.0.0
@@ -85,7 +85,7 @@ class ApiSetLayoutController extends AppController
     }
 
     /**
-     * setlayout
+     * setBehaviorlayout
      * @param:
      * @author: T.Kobashi
      * @since: 1.0.0
@@ -131,6 +131,59 @@ class ApiSetLayoutController extends AppController
 
             if (!$this->BehaviorRelations->save($data['BehaviorRelations'],false,array('id','position_x','position_y'))) {
                 $this->BehaviorRelations->rollback();
+                throw new InternalErrorException();
+            }
+        }
+    }
+
+
+    /**
+     * setPatternBehaviorlayout
+     * @param:
+     * @author: T.Kobashi
+     * @since: 1.0.0
+     */
+    function setPatternBehaviorlayout ()
+    {
+        $position_x = $this->request->query['x'];
+        $position_y = $this->request->query['y'];
+        $link_x = $this->request->query['link_x'];
+        $link_y = $this->request->query['link_y'];
+        $id = $this->request->query['id'];
+        $link_id = $this->request->query['link_id'];
+
+
+        for($i = 0; $i < count($id); $i++) {
+
+
+            $data = array();
+
+            // トランザクション処理
+            $this->PatternBehavior->create();
+
+            $data['PatternBehavior']['id'] = $id[$i];
+            $data['PatternBehavior']['position_x'] = $position_x[$i];
+            $data['PatternBehavior']['position_y'] = $position_y[$i];
+
+            if (!$this->PatternBehavior->save($data['PatternBehavior'],false,array('id','position_x','position_y'))) {
+                $this->PatternBehavior->rollback();
+                throw new InternalErrorException();
+            }
+        }
+
+        for($j = 0; $j < count($link_id); $j++) {
+
+            $data = array();
+
+            // トランザクション処理
+            $this->PatternBehaviorRelations->create();
+
+            $data['PatternBehaviorRelations']['id'] = $link_id[$j];
+            $data['PatternBehaviorRelations']['position_x'] = $link_x[$j];
+            $data['PatternBehaviorRelations']['position_y'] = $link_y[$j];
+
+            if (!$this->PatternBehaviorRelations->save($data['PatternBehaviorRelations'],false,array('id','position_x','position_y'))) {
+                $this->PatternBehaviorRelations->rollback();
                 throw new InternalErrorException();
             }
         }

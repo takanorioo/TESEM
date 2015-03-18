@@ -93,7 +93,7 @@
             <?php echo $this->Form->create('Project', array('controller' => 'Project','action' => 'add')); ?>
             <div class="form-group">
               <fieldset>
-                <legend>Projecto Name</legend>
+                <legend>Project Name</legend>
                 <?php echo $this->Form->input('Project.name', array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Project Name', 'error'=>false)); ?>
               </fieldset>
             </div>
@@ -161,6 +161,8 @@
       <a class="navbar-brand" href="/<?php echo $base_dir;?>/">
         <?php if (!empty($project_name)): ?>
           Project : <span style="color: indianred;"><?php echo $project_name;?></span>
+        <?php elseif (isset($allow_non_project)): ?>
+
         <?php else: ?>
           Project : <span style="color: indianred;">Please Select Project !</span>
           <script type="text/javascript">
@@ -218,13 +220,13 @@
     <!-- /.dropdown -->
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-user fa-fw"></i>
-         <i class="fa fa-caret-down"></i>
+       <!--  <i class="fa fa-user fa-fw"></i>
+        <i class="fa fa-caret-down"></i> -->
+        <i class="fa"><img src="/<?php echo $base_dir;?>/img/user/user_<?php echo $me['User']['id']; ?>.jpg" style="width: 40px;margin: -10px;"></i>
+
       </a>
       <ul class="dropdown-menu dropdown-user">
-        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-        </li>
-        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        <li><a href="/<?php echo $base_dir;?>/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
         </li>
         <li class="divider"></li>
         <li><a href="/<?php echo $base_dir;?>/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -239,6 +241,9 @@
   <div class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
       <ul class="nav" id="side-menu">
+        <li>
+          <a href="/<?php echo $base_dir;?>/projects">My Projects</a>
+        </li>
         <li>
           <a href="/<?php echo $base_dir;?>/">Structre</a>
         </li>

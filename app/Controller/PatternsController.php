@@ -16,7 +16,9 @@ class PatternsController extends AppController
         'PatternElement',
         'PatternAttribute',
         'PatternMethod',
-        'PatternRelation'
+        'PatternRelation',
+        'PatternBehavior',
+        'PatternBehaviorRelations'
         );
 
     public $helpers = array('Html', 'Form');
@@ -43,6 +45,65 @@ class PatternsController extends AppController
 
             //要素の読み込み始まり
             $pattern_elements = $this->PatternElement->getPatternElements($pattern_id); 
+
+            //Behavior
+            $behaviors = $this->PatternBehavior->getBehaviorElement($pattern_id);
+            $this->set('behaviors', $behaviors);
+
+            if(!empty($behaviors)) {
+
+                for($i = 0; $i < count($behaviors); $i++) {
+                    $behabior_relation[$behaviors[$i]['PatternBehavior']['id']] = $behaviors[$i]['PatternElement']['element'];
+                }
+                $this->set('behabior_relation', $behabior_relation);
+
+                $relation_key = array_keys($behabior_relation);
+
+                for($i = 0; $i < count($behabior_relation); $i++) {
+                    $option_behabior_relation[$i]['id'] = $relation_key[$i];
+                    $option_behabior_relation[$i]['name'] = $behabior_relation[$relation_key[$i]];
+                }
+                $this->set('option_behabior_relation', $option_behabior_relation);
+
+
+
+                //データ構造の加工
+                $behavior_count = count($behaviors);
+                $this->set('behavior_count', $behavior_count);
+
+
+                $behaviors_count = count($behaviors);
+                for($i = 0; $i < $behaviors_count; $i++) {
+                    $behaviors_data['PatternBehavior']['id'][] = $behaviors[$i]['PatternBehavior']['id'];
+                    $behaviors_data['PatternBehavior']['type'][] = $behaviors[$i]['PatternBehavior']['type'];
+                    $behaviors_data['PatternBehavior']['label_id'][] = $behaviors[$i]['PatternBehavior']['pattern_element_id'];
+                    $behaviors_data['PatternBehavior']['order'][] = $behaviors[$i]['PatternBehavior']['order'];
+                    $behaviors_data['PatternBehavior']['name'][] = $behaviors[$i]['PatternElement']['element'];
+                }
+                $this->set('behaviors_data', $behaviors_data);
+
+
+                $behavior_action_count = 0;
+
+
+                for($i = 0; $i < count($behaviors); $i++) {
+                    for($j = 0; $j < count($behaviors[$i]['PatternBehaviorRelations']); $j++) {  
+                        $behaviors_data['PatternBehaviorRelations']['id'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['id'];
+                        $behaviors_data['PatternBehaviorRelations']['behavior_id'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['pattern_behavior_id'];
+                        $behaviors_data['PatternBehaviorRelations']['action'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['action'];
+                        $behaviors_data['PatternBehaviorRelations']['guard'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['guard'];
+                        $behaviors_data['PatternBehaviorRelations']['behavior_relation_id'][] = $behaviors[$i]['BehaviorRelations'][$j]['behavior_relation_id'];
+                        $behaviors_data['PatternBehaviorRelations']['order'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['order'];
+                        $behavior_action_count ++;
+                    }
+                }
+
+                $this->set('behavior_action_count', $behavior_action_count);
+                $this->set('behaviors_data', $behaviors_data);
+            }
+            //Behavior
+
+
 
 
             for($i = 0; $i < count($pattern_elements); $i++) 
@@ -133,6 +194,7 @@ class PatternsController extends AppController
     {
         $patterns = $this->Pattern->getPatterns();
         $this->set('patterns', $patterns);
+
     }
 
     /**
@@ -189,8 +251,8 @@ class PatternsController extends AppController
 
             //現在存在していれば
             // if($this->PatternElement->checkElement($pattern_element['PatternRelation'][$i]['pattern_element_relation_id'])) {
-                $pattern_element['PatternRelation']['id'][] = $pattern_element['PatternRelation'][$i]['id'];
-                $pattern_element['PatternRelation']['pattern_element_relation_id'][] = $pattern_element['PatternRelation'][$i]['pattern_element_relation_id'];
+            $pattern_element['PatternRelation']['id'][] = $pattern_element['PatternRelation'][$i]['id'];
+            $pattern_element['PatternRelation']['pattern_element_relation_id'][] = $pattern_element['PatternRelation'][$i]['pattern_element_relation_id'];
             // }
         }
 
@@ -300,7 +362,7 @@ class PatternsController extends AppController
             }
             $pattern_id = $this->Session->read('Pattern.id');
             $this->redirect(array('controller' => 'Patterns', 'action' => 'detail',$pattern_id));
-        
+
 
         }
         $this->request->data = $pattern_element;
@@ -312,8 +374,8 @@ class PatternsController extends AppController
      * @author: T.Kobashi
      * @since: 1.0.0
      */
-    public function add()
-    {
+       public function add()
+       {
 
         //エレメントの追加
         if (!empty($this->request->data['addElement'])) {
@@ -409,7 +471,7 @@ class PatternsController extends AppController
 
             $pattern_id = $this->Session->read('Pattern.id');
             $this->redirect(array('controller' => 'Patterns', 'action' => 'detail',$pattern_id));
-        
+
         }
     }
 

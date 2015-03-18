@@ -20,12 +20,10 @@
         echo $this->fetch('css');
 
     ?>
-
-
+    
 </head>
-<body style = "padding-top:40px" onload="init()" >
+<body style = "padding-top:10px" onload="init()" >
 
-    <?php echo $this->Session->flash(); ?>
     <?php echo $this->fetch('content'); ?>
 
     </div>

@@ -11,8 +11,8 @@ class ImageUploadComponent extends Component {
 
         $rate = $height / $width;
 
-        $rewidth = 300;
-        $reheight = 300 * $rate;
+        $rewidth = 500;
+        $reheight = 500 * $rate;
 
         $imgurl  = Configure::read('URL').'img/user/';
         $imgname     = 'user_'.$user_id.'.jpg';
@@ -42,17 +42,6 @@ class ImageUploadComponent extends Component {
             $thumb->height($reheight);
         }
 
-        $thumb->save();
-
-        //サムネイル生成
-        $imgurl  = Configure::read('URL').'img/user/';
-        $imgname     = 'user_'.$user_id.'.jpg';
-        $new_imgname = 'user_thumbnail/user_thumbnail_'.$user_id.'.jpg';
-
-        $thumb = new Image($imgurl . $imgname);
-        $thumb->name($new_imgname);
-
-        $thumb->resize(50);
         $thumb->save();
 
     }

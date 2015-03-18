@@ -1,7 +1,31 @@
 
+<div class="container">
+  <img src="/<?php echo $base_dir;?>/img/logo.png" style="width: 250px;">
+</div>
 
 <!-- ここからログインヘッダーエリア -->
 <div class="login-header">
+
+  <div class="container">
+  <?php echo $this->Session->flash(); ?>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="login-panel panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Facebook Login</h3>
+          </div>
+          <div class="panel-body" >
+            <div class="control-group" style="text-align: center;">
+              <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/facebook" class ="btn btn-primary" >Login With Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3" style="padding-top: 10px;">
@@ -42,31 +66,25 @@
   <!-- ここからログインヘッダーエリア -->
 
 
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="login-panel panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Facebook Login</h3>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/sign_up/">
+          <div class="panel-heading"style="background: #5cb85c;color: white;">
+            <h3 class="panel-title">Sign UP</h3>
           </div>
-          <div class="panel-body" >
-            <div class="control-group" style="text-align: center;">
-              <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/facebook" class ="btn btn-primary" >Login With Facebook</a>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <!-- ここからログインヘッダーエリア -->
 
 
 
-<!-- ここからフッターのエリア -->
-<footer style="padding-top: 20px;">
-  <div class="container">
-    <p class="copyright text-muted small" style="text-align: right;">Copyright &copy; Takanori Kobashi 2013. All Rights Reserved</p>
-  </div>
-</footer>
-<!-- ここまでフッターのエリア -->
+
+  

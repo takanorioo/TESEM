@@ -5,6 +5,7 @@
 class Pattern extends AppModel {
     public $name = 'Pattern';
     public $hasMany = array('PatternElement');
+    public $belongsTo = array('User');
 
     public function getPatterns() {
 

@@ -4,6 +4,30 @@
  */
 class User extends AppModel {
     public $name = 'User';
+    public $validate = array(
+        'email' => array(
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'Enter your email'
+            ),
+            'isUnique' => array(
+                'rule' => 'isUnique',
+                'message' => 'This email is alredy registerd'
+            ),
+        ),
+        'password' => array(
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'Enter your password'
+            ),
+        ),
+        'user_name' => array(
+            'isUnique' => array(
+                'rule' => 'isUnique',
+                'message' => 'This user name is alredy registerd'
+            ),
+        ),
+    );
 
 
     //ユーザーIDからユーザー情報を取得
@@ -39,6 +63,18 @@ class User extends AppModel {
             'fields' => array("User.*","Mentering.id","Mentering.is_valid")
         ));
         return $result;
+    }
+
+    //ユーザーIDからユーザー情報を取得
+    function getUserInfoByUserName($user_name){
+
+        $result = $this->find('first', array(
+            'conditions' => array(
+                'User.user_name' => $user_name,
+            )
+        ));
+
+        return $result['User']['id'];
     }
 
 }

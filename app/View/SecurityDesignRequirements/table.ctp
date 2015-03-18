@@ -19,7 +19,7 @@
 			<tr>
 				<td><?php echo $i + 1;?></td>
 				<td><?php echo h($security_design_requirement[$i]['Pattern']['name']);?></td>
-				<td style="text-align: center;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></td>
+				<td style="text-align: center;"><a href="/<?php echo $base_dir;?>/security_design_requirements/delete/<?php echo h($security_design_requirement[$i]['SecurityDesignRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
 			</tr>	
 		<?php endfor; ?>
 

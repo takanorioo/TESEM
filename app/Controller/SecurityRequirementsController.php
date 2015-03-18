@@ -144,7 +144,7 @@ class SecurityRequirementsController extends AppController
     }
 
     /**
-     * index
+     * delete
      * @param:
      * @author: T.Kobashi
      * @since: 1.0.0
@@ -165,6 +165,33 @@ class SecurityRequirementsController extends AppController
         }
 
         $this->TargetFunction->commit();
+
+        $this->Session->setFlash('You successfully delete.', 'default', array('class' => 'alert alert-success'));
+        $this->redirect($this->referer());
+    }
+
+     /**
+     * delete_security_requirement
+     * @param:
+     * @author: T.Kobashi
+     * @since: 1.0.0
+     */
+    public function delete_security_requirement($id = null)
+    {
+        //不正アクセス
+        if (!isset($id)) {
+            throw new BadRequestException();
+        }
+
+         // トランザクション処理始め
+        $this->SecurityRequirement->begin();
+
+        if (!$this->SecurityRequirement->delete($id)) {
+            $this->SecurityRequirement->rollback();
+            throw new BadRequestException();
+        }
+
+        $this->SecurityRequirement->commit();
 
         $this->Session->setFlash('You successfully delete.', 'default', array('class' => 'alert alert-success'));
         $this->redirect($this->referer());
