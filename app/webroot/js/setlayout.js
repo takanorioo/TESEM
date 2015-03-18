@@ -117,7 +117,7 @@ $(window).load(function() {
 
 
         jQuery.ajax(
-            '/uml/api/setlayout/setBehaviorlayout',
+            '/api/setlayout/setBehaviorlayout',
                 {
                     dataType: 'json',
                     data: {
@@ -175,7 +175,7 @@ $(window).load(function() {
 
 
         jQuery.ajax(
-            '/uml/api/setlayout/setPatternlayout',
+            '/api/setlayout/setPatternlayout',
                 {
                     dataType: 'json',
                     data: {
@@ -260,7 +260,7 @@ $(window).load(function() {
 
 
         jQuery.ajax(
-            '/uml/api/setlayout/setPatternBehaviorlayout',
+            '/api/setlayout/setPatternBehaviorlayout',
                 {
                     dataType: 'json',
                     data: {
