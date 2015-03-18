@@ -1,6 +1,6 @@
 <div style="float: right;">
-	<h1 style="padding-left: 280px;"><a href="/<?php echo $base_dir;?>/security_design_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Set Security Design Patterns</a></h1>
-	<h1 style="margin-top: -44px;"><a href="/<?php echo $base_dir;?>/security_design_requirements/table/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Show Security Design Requirements</a></h1>
+	<h1 style="padding-left: 280px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_design_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Set Security Design Patterns</a></h1>
+	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_design_requirements/table/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Show Security Design Requirements</a></h1>
 </div>
 
 <div style="padding-top: 60px;">

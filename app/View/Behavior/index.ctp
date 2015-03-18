@@ -167,7 +167,7 @@ echo $this->Html->script(array('joint.shapes.erd'));
 												</td>
 												<td><?php echo $this->Form->input('Behavior.label_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
 												</td>
-												<td><a href="/<?php echo $base_dir;?>/behavior/element_delete/<?php echo $behaviors_data['Behavior']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+												<td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/behavior/element_delete/<?php echo $behaviors_data['Behavior']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 												</td>
 											</tr>
 										<?php endfor; ?>
@@ -229,7 +229,7 @@ echo $this->Html->script(array('joint.shapes.erd'));
 												</td>
 												<td><?php echo $this->Form->input('BehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
 												</td>
-												<td><a href="/<?php echo $base_dir;?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+												<td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 												</td>
 											</tr>
 										<?php endfor; ?>

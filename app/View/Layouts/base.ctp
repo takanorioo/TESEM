@@ -10,7 +10,7 @@
   <?php echo $this->Html->meta('description', $description_for_layout); ?>
   <?php echo $this->Html->meta('keywords', $keywords_for_layout); ?>
 
-  <link href="/<?php echo $base_dir;?>/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/font-awesome/css/font-awesome.css" rel="stylesheet">
 
   <?php
 
@@ -124,7 +124,7 @@
           <div class ="modal-body">
             <?php for($i = 0; $i < count($projects); $i++): ?>
              <div class="form-group">
-              <a href="/<?php echo $base_dir;?>/projects/set_project/<?php echo h($projects[$i]['Project']['id']);?>">
+              <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/projects/set_project/<?php echo h($projects[$i]['Project']['id']);?>">
                 <div>
                   <i class="fa fa-comment fa-fw"></i> <?php echo h($projects[$i]['Project']['name']);?>"
                   <span class="pull-right text-muted small">
@@ -158,7 +158,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/<?php echo $base_dir;?>/">
+      <a class="navbar-brand" href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/">
         <?php if (!empty($project_name)): ?>
           Project : <span style="color: indianred;"><?php echo $project_name;?></span>
         <?php elseif (isset($allow_non_project)): ?>
@@ -192,7 +192,7 @@
         <?php for($i = 0; $i < count($projects); $i++): ?>
           <li class="divider"></li>
           <li>
-            <a href="/<?php echo $base_dir;?>/projects/set_project/<?php echo h($projects[$i]['Project']['id']);?>">
+            <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/projects/set_project/<?php echo h($projects[$i]['Project']['id']);?>">
               <div>
                 <i class="fa fa-comment fa-fw"></i> <?php echo h($projects[$i]['Project']['name']);?>"
                 <span class="pull-right text-muted small">
@@ -226,10 +226,10 @@
 
       </a>
       <ul class="dropdown-menu dropdown-user">
-        <li><a href="/<?php echo $base_dir;?>/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        <li><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
         </li>
         <li class="divider"></li>
-        <li><a href="/<?php echo $base_dir;?>/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
         </li>
       </ul>
       <!-- /.dropdown-user -->
@@ -242,17 +242,17 @@
     <div class="sidebar-collapse">
       <ul class="nav" id="side-menu">
         <li>
-          <a href="/<?php echo $base_dir;?>/projects">My Projects</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/projects">My Projects</a>
         </li>
         <li>
-          <a href="/<?php echo $base_dir;?>/">Structre</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/">Structre</a>
         </li>
         <li>
           <a href="#">Elements<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <?php for($i = 0; $i < count($elements); $i++): ?>
               <li>
-                <a href="/<?php echo $base_dir;?>/element/edit/<?php echo h($elements[$i]['Label']['id']);?>"><span><< <?php echo h($elements[$i]['Label']['interface']);?> >> </span><?php echo h($elements[$i]['Label']['name']);?></a>
+                <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/edit/<?php echo h($elements[$i]['Label']['id']);?>"><span><< <?php echo h($elements[$i]['Label']['interface']);?> >> </span><?php echo h($elements[$i]['Label']['name']);?></a>
 
               </li>
             <?php endfor; ?>
@@ -260,16 +260,16 @@
           <!-- /.nav-second-level -->
         </li>
         <li>
-          <a href="/<?php echo $base_dir;?>/element/add">Add Elements</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/add">Add Elements</a>
         </li>
         <li>
-          <a href="/<?php echo $base_dir;?>/element/target">Set Target Function</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/target">Set Target Function</a>
         </li>
         <li>
-          <a href="/<?php echo $base_dir;?>/element/target_list">Target Function Lists</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/target_list">Target Function Lists</a>
         </li>
         <li>
-          <a href="/<?php echo $base_dir;?>/patterns">Pattern Lists</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns">Pattern Lists</a>
         </li>
       </ul>
       <!-- /#side-menu -->

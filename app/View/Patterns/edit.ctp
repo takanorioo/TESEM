@@ -64,7 +64,7 @@
 			<div style="padding-top: 20px;">
 				<span style="font-size: 40px;margin-left: 10px;">Element : <?php echo $pattern_element['PatternElement']['element'];?></span>
 				
-				<a  href="/<?php echo $base_dir;?>/element/delete/<?php echo $pattern_element_id;?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;">Delete: <img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: -7px;"></a>
+				<a  href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/delete/<?php echo $pattern_element_id;?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;">Delete: <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: -7px;"></a>
 			</div>
 		</div>
 
@@ -111,7 +111,7 @@
 										</td>
 										<td><?php echo $this->Form->input('PatternAttribute.name.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'AttributeName', 'error'=>false)); ?>
 										</td>
-										<td><a href="/<?php echo $base_dir;?>/patterns/attribute_delete/<?php echo $pattern_element['PatternAttribute']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+										<td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/attribute_delete/<?php echo $pattern_element['PatternAttribute']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 										</td>
 									</tr>
 								<?php endfor; ?>
@@ -140,7 +140,7 @@
 										</td>
 										<td><?php echo $this->Form->input('PatternMethod.name.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'AttributeName', 'error'=>false)); ?>
 										</td>
-										<td><a href="/<?php echo $base_dir;?>/patterns/method_delete/<?php echo $pattern_element['PatternMethod']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+										<td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/method_delete/<?php echo $pattern_element['PatternMethod']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 										</td>
 									</tr>
 
@@ -167,7 +167,7 @@
 										<?php echo $this->Form->hidden('PatternRelation.id.'.$i, array('label' => false, 'div' => false, 'id' => false)); ?>
 										<td><?php echo $this->Form->input('PatternRelation.pattern_element_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => false, 'type' => 'select', 'options' => $relation, 'class' => 'form-control', 'empty' => '----', 'error'=>false)); ?>
 										</td>
-										<td><a href="/<?php echo $base_dir;?>/patterns/relation_delete/<?php echo $pattern_element['PatternRelation']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+										<td><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/patterns/relation_delete/<?php echo $pattern_element['PatternRelation']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 										</td>
 									</tr>
 								</tbody>

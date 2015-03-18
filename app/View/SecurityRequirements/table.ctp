@@ -1,7 +1,7 @@
 
 <div style="float: right;">
-	<h1 style="padding-left: 200px;"><a href="/<?php echo $base_dir;?>/security_requirements/bind/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Bind Elements</a></h1>
-	<h1 style="margin-top: -44px;"><a href="/<?php echo $base_dir;?>/security_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Select Countermeasures</a></h1>
+	<h1 style="padding-left: 200px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_requirements/bind/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Bind Elements</a></h1>
+	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Select Countermeasures</a></h1>
 </div>
 
 
@@ -21,7 +21,7 @@
 			<tr>
 				<td><?php echo $i + 1;?></td>
 				<td><?php echo h($security_requirement[$i]['Countermeasure']['name']);?></td>
-				<td style="text-align: center;"><a href="/<?php echo $base_dir;?>/security_requirements/delete_security_requirement/<?php echo h($security_requirement[$i]['SecurityRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
+				<td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_requirements/delete_security_requirement/<?php echo h($security_requirement[$i]['SecurityRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
 			</tr>
 		<?php endfor; ?>
 
@@ -147,8 +147,8 @@
 	</table>
 
 	<div style="float: right;">
-		<h1 style="padding-left: 160px;"><a href="/<?php echo $base_dir;?>/element/sr_model_script_data/<?php echo h($method['Method']['id']);?><?php echo $conditions; ?>" class ="btn btn-primary">Create Model Script</a></h1>
-		<h1 style="margin-top: -44px;"><a href="/<?php echo $base_dir;?>/element/sr_testcasedata/<?php echo h($method['Method']['id']);?><?php echo $conditions; ?>" class ="btn btn-primary">Create Test Script</a></h1>
+		<h1 style="padding-left: 160px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/sr_model_script_data/<?php echo h($method['Method']['id']);?><?php echo $conditions; ?>" class ="btn btn-primary">Create Model Script</a></h1>
+		<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/element/sr_testcasedata/<?php echo h($method['Method']['id']);?><?php echo $conditions; ?>" class ="btn btn-primary">Create Test Script</a></h1>
 	</div>
 
 

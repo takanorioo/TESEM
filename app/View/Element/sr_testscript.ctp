@@ -70,7 +70,7 @@
   <div class="col-md-12 ">
     <br>
     <sapn style="font-size: 30px;">Test Script (.txt)
-      <a id="test_download" target="_blank"> > Download <img src="/<?php echo $base_dir;?>/img/download.png"></a>
+      <a id="test_download" target="_blank"> > Download <img src="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/img/download.png"></a>
     </span>
 
   </div>

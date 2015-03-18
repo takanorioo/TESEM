@@ -1,5 +1,5 @@
 <div style="float: right;">	
-	<h1><a href="/<?php echo $base_dir;?>/security_requirements/table/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Show Security Requirements</a></h1>
+	<h1><a href="<?php echo FULL_BASE_URL; ?>/<?php echo $base_dir;?>/security_requirements/table/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Show Security Requirements</a></h1>
 </div>
 
 <?php for($i = 0; $i < count($security_requirement); $i++): ?>
