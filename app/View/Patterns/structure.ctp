@@ -91,8 +91,8 @@ var all = [
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo $pattern_id; ?>">Structure</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/behavior/<?php echo $pattern_id; ?>">Behabior</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/elements/<?php echo $pattern_id; ?>">Elements</a></li>
-  <li><a href="#home">Pattern Requiremetns</a></li>
-  <li><a href="#home">OCL</a></li>
+  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/requiremetns/<?php echo $pattern_id; ?>">Pattern Requiremetns</a></li>
+  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/ocl/<?php echo $pattern_id; ?>">OCL</a></li>
 </ul>
 
 <div class="tab-content">
