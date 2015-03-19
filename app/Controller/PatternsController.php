@@ -224,36 +224,36 @@ class PatternsController extends AppController
         $pattern = $this->Pattern->getPattern($pattern_id);
         $this->set('pattern', $pattern);
 
-        if (!empty($this->request->data['Behavior'])) {
+        if (!empty($this->request->data['PatternBehavior'])) {
 
             $request_data = $this->request->data;
 
-            for($i = 0; $i < count($request_data['Behavior']['type']); $i++) {
+            for($i = 0; $i < count($request_data['PatternBehavior']['type']); $i++) {
 
                 //初期化
                 $data = array();
 
                 // トランザクション処理
-                $this->Behavior->create();
-                $this->Behavior->begin();
+                $this->PatternBehavior->create();
+                $this->PatternBehavior->begin();
 
-                if(!empty($request_data['Behavior']['id'][$i])) {
-                    $data['Behavior']['id'] = $request_data['Behavior']['id'][$i];
+                if(!empty($request_data['PatternBehavior']['id'][$i])) {
+                    $data['PatternBehavior']['id'] = $request_data['PatternBehavior']['id'][$i];
                 }
 
-                $data['Behavior']['type'] = $request_data['Behavior']['type'][$i];
-                $data['Behavior']['label_id'] = $request_data['Behavior']['label_id'][$i];
-                $data['Behavior']['method_id'] = $method_id;
+                $data['PatternBehavior']['type'] = $request_data['PatternBehavior']['type'][$i];
+                $data['PatternBehavior']['pattern_element_id'] = $request_data['PatternBehavior']['pattern_element_id'][$i];
+                $data['PatternBehavior']['pattern_id'] = $pattern_id;
 
-                if (!$this->Behavior->save($data['Behavior'],false,array('id','type','label_id','method_id'))) {
-                    $this->Behavior->rollback();
+                if (!$this->PatternBehavior->save($data['PatternBehavior'],false,array('id','type','pattern_element_id','pattern_id'))) {
+                    $this->PatternBehavior->rollback();
                     throw new InternalErrorException();
                 }
 
-                $this->Behavior->commit();
+                $this->PatternBehavior->commit();
             }
-            $this->Session->setFlash('You successfully Set Target Function.', 'default', array('class' => 'alert alert-success'));
-            $this->redirect(array('controller' => 'Behavior', 'action' => 'index',$method_id));
+            $this->Session->setFlash('You successfully Edit PatternBehavior.', 'default', array('class' => 'alert alert-success'));
+            $this->redirect(array('controller' => 'Patterns', 'action' => 'behavior',$pattern_id));
         }
 
 
@@ -261,34 +261,34 @@ class PatternsController extends AppController
 
             $request_data = $this->request->data;
 
-            for($i = 0; $i < count($request_data['BehaviorRelations']['behavior_id']); $i++) {
+            for($i = 0; $i < count($request_data['PatternBehaviorRelations']['pattern_behavior_id']); $i++) {
 
                 //初期化
                 $data = array();
 
                 // トランザクション処理
-                $this->BehaviorRelations->create();
-                $this->BehaviorRelations->begin();
+                $this->PatternBehaviorRelations->create();
+                $this->PatternBehaviorRelations->begin();
 
-                if(!empty($request_data['BehaviorRelations']['id'][$i])) {
-                    $data['BehaviorRelations']['id'] = $request_data['BehaviorRelations']['id'][$i];
+                if(!empty($request_data['PatternBehaviorRelations']['id'][$i])) {
+                    $data['PatternBehaviorRelations']['id'] = $request_data['PatternBehaviorRelations']['id'][$i];
                 }
 
-                $data['BehaviorRelations']['behavior_id'] = $request_data['BehaviorRelations']['behavior_id'][$i];
-                $data['BehaviorRelations']['behavior_relation_id'] = $request_data['BehaviorRelations']['behavior_relation_id'][$i];
-                $data['BehaviorRelations']['action'] = $request_data['BehaviorRelations']['action'][$i];
-                $data['BehaviorRelations']['guard'] = $request_data['BehaviorRelations']['guard'][$i];
-                $data['BehaviorRelations']['order'] = $request_data['BehaviorRelations']['order'][$i];
+                $data['PatternBehaviorRelations']['pattern_behavior_id'] = $request_data['PatternBehaviorRelations']['pattern_behavior_id'][$i];
+                $data['PatternBehaviorRelations']['behavior_relation_id'] = $request_data['PatternBehaviorRelations']['behavior_relation_id'][$i];
+                $data['PatternBehaviorRelations']['action'] = $request_data['PatternBehaviorRelations']['action'][$i];
+                $data['PatternBehaviorRelations']['guard'] = $request_data['PatternBehaviorRelations']['guard'][$i];
+                $data['PatternBehaviorRelations']['order'] = $request_data['PatternBehaviorRelations']['order'][$i];
 
-                if (!$this->BehaviorRelations->save($data['BehaviorRelations'],false,array('id','behavior_id','behavior_relation_id','action','guard','order'))) {
-                    $this->BehaviorRelations->rollback();
+                if (!$this->PatternBehaviorRelations->save($data['PatternBehaviorRelations'],false,array('id','pattern_behavior_id','behavior_relation_id','action','guard','order'))) {
+                    $this->PatternBehaviorRelations->rollback();
                     throw new InternalErrorException();
                 }
 
-                $this->BehaviorRelations->commit();
+                $this->PatternBehaviorRelations->commit();
             }
-            $this->Session->setFlash('You successfully Set Target Function.', 'default', array('class' => 'alert alert-success'));
-            $this->redirect(array('controller' => 'Behavior', 'action' => 'index',$method_id));
+            $this->Session->setFlash('You successfully Set Edit PatternBehavior..', 'default', array('class' => 'alert alert-success'));
+            $this->redirect(array('controller' => 'Patterns', 'action' => 'behavior',$pattern_id));
         }
 
         if(!empty($behaviors)) {
