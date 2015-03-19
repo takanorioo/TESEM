@@ -248,7 +248,7 @@ $("#add_action").click(function(){
                         </td>
                         <td><?php echo $this->Form->input('PatternBehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
                         </td>
-                        <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+                        <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/action_delete/<?php echo $behaviors_data['PatternBehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
                         </td>
                       </tr>
                     <?php endfor; ?>
