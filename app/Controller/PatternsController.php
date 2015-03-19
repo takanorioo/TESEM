@@ -211,7 +211,7 @@ class PatternsController extends AppController
                     $behaviors_data['PatternBehaviorRelations']['pattern_behavior_id'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['pattern_behavior_id'];
                     $behaviors_data['PatternBehaviorRelations']['action'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['action'];
                     $behaviors_data['PatternBehaviorRelations']['guard'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['guard'];
-                    $behaviors_data['PatternBehaviorRelations']['behavior_relation_id'][] = $behaviors[$i]['BehaviorRelations'][$j]['behavior_relation_id'];
+                    $behaviors_data['PatternBehaviorRelations']['behavior_relation_id'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['behavior_relation_id'];
                     $behaviors_data['PatternBehaviorRelations']['order'][] = $behaviors[$i]['PatternBehaviorRelations'][$j]['order'];
                     $behavior_action_count ++;
                 }
