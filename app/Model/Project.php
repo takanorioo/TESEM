@@ -7,6 +7,16 @@ class Project extends AppModel {
     public $name = 'Project';
     public $hasMany = array('UsersProject');
 
+    public function getPublicProjects()
+    {
+        $result = $this->find('all', array(
+            'conditions' => array(
+                'Project.type' => '0'
+
+            )
+        ));
+        return $result;
+    }
 
     public function getOwnProjects($user_id)
     {
