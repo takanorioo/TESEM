@@ -5,12 +5,6 @@ echo $this->Html->script(array('joint.shapes.erd'));
 
 ?>
 
-<script>
-	$(function () {
-		$('#myTab a:first').tab('show')
-	})
-</script>
-
 
 
 <script>
@@ -94,7 +88,7 @@ $("#add_action").click(function(){
 
 
 	<!-- Behavior -->
-	<div class="tab-pane fade" id="profile" style="padding-top: 30px;">
+	<div id="profile" style="padding-top: 30px;">
 
 		<div class="row" style="padding-top: 40px;position: absolute;right: 100px;">
 			<input id="setPatternBehavior" type="button" name ="setPatternBehavior" class ="btn btn-primary" value="Set Layout" style="font-size: 20px;">
@@ -157,7 +151,128 @@ $("#add_action").click(function(){
 
 </script>
 
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+  <li><a href="#tab1" role="tab" data-toggle="tab">Elements</a></li>
+  <li><a href="#tab2" role="tab" data-toggle="tab">Action</a></li>
+</ul>
 
+<div class="tab-content">
+
+  <!--Structure  -->
+  <div class="tab-pane  active" id="tab1"  style="padding-top: 30px;">
+    <div>
+      <div>
+        <?php echo $this->Form->create('Label', array('id' => false)); ?>
+        <div>
+          <div class="row">
+            <div class="col-md-12 well element">
+              <p style="text-align: right;">
+                <input id="add_behavior" type="button" class ="btn btn-success" value="+" />
+              </p>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Element</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="add_behavior">
+                  <?php if(!empty($behaviors_data['PatternBehavior']['id'])): ?>
+                    <?php for($i = 0; $i < count($behaviors_data['PatternBehavior']['id']); $i++): ?>
+                      <tr>
+                        <?php echo $this->Form->hidden('PatternBehavior.id.'.$i,  array('label' => false, 'div' => false, 'id' => false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehavior.type.'.$i, array('label' => false, 'div' => false, 'id' => false, 'type' => 'select', 'options' => $BEHAVIOR, 'class' => 'form-control', 'empty' => '----', 'error'=>false)); ?>
+                        </td>
+                        <td><?php echo $this->Form->input('PatternBehavior.pattern_element_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
+                        </td>
+                        <td><a href="<?php echo FULL_BASE_URL; ?>/pattern/behabior_element_delete/<?php echo $behaviors_data['PatternBehavior']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+                        </td>
+                      </tr>
+                    <?php endfor; ?>
+                  <?php endif; ?>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-12">
+              <p style="text-align: center;">
+                <?php echo $this->Form->submit('Edit Element', array('name' => 'editElement', 'div' => false, 'class' => 'btn btn-primary'));
+                ?>
+              </p>
+              <input type="hidden" name="token" value="<?php echo session_id();?>">
+              <input type="hidden" name="editElement" value="editElement">
+            </div>
+            <?php echo $this->Form->end(); ?>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tab-pane fade" id="tab2" style="padding-top: 30px;">
+    <div>
+      <div>
+        <?php echo $this->Form->create('Label', array('id' => false)); ?>
+        <div>
+          <div class="row">
+            <div class="col-md-12 well element">
+              <p style="text-align: right;">
+                <input id="add_action" type="button" class ="btn btn-success" value="+" />
+              </p>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Element (From)</th>
+                    <th>Element (To)</th>
+                    <th>Guard</th>
+                    <th>Action</th>
+                    <th>Order</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="add_action">
+                  <?php if(!empty($behaviors_data['BehaviorRelations']['id'])): ?>
+                    <?php for($i = 0; $i < count($behaviors_data['BehaviorRelations']['id']); $i++): ?>
+                      <tr>
+                        <?php echo $this->Form->hidden('BehaviorRelations.id.'.$i,  array('label' => false, 'div' => false, 'id' => false)); ?>
+                        <td><?php echo $this->Form->input('BehaviorRelations.behavior_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
+                        </td>
+                        <td><?php echo $this->Form->input('BehaviorRelations.behavior_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
+                        </td>
+                        <td><?php echo $this->Form->input('BehaviorRelations.guard.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => '[Guard]', 'error'=>false)); ?>
+                        </td>
+                        <td><?php echo $this->Form->input('BehaviorRelations.action.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Action', 'error'=>false)); ?>
+                        </td>
+                        <td><?php echo $this->Form->input('BehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
+                        </td>
+                        <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
+                        </td>
+                      </tr>
+                    <?php endfor; ?>
+                  <?php endif; ?>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-12">
+              <p style="text-align: center;">
+                <?php
+                echo $this->Form->submit('Edit Action', array('name' => 'editAction', 'div' => false, 'class' => 'btn btn-primary'));
+                ?>
+              </p>
+              <input type="hidden" name="token" value="<?php echo session_id();?>">
+              <input type="hidden" name="editAction" value="editAction">
+            </div>
+            <?php echo $this->Form->end(); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 
