@@ -245,7 +245,7 @@
           <a href="<?php echo FULL_BASE_URL; ?>/projects">My Projects</a>
         </li>
         <li>
-          <a href="<?php echo FULL_BASE_URL; ?>/">Structre</a>
+          <a href="<?php echo FULL_BASE_URL; ?>/">Structure</a>
         </li>
         <li>
           <a href="#">Elements<span class="fa arrow"></span></a>

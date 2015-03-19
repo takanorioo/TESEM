@@ -88,7 +88,7 @@ var all = [
 <h3 style="padding-bottom: 20px;">Selected Countermeasure </h3>
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/structre/<?php echo $pattern_id; ?>">Structure</a></li>
+  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo $pattern_id; ?>">Structure</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/behavior/<?php echo $pattern_id; ?>">Behabior</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/elements/<?php echo $pattern_id; ?>">Elements</a></li>
   <li><a href="#home">Pattern Requiremetns</a></li>
