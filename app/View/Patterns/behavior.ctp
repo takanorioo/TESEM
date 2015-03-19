@@ -144,7 +144,7 @@ $("#add_action").click(function(){
 
 		<?php for($i = 0; $i < count($behaviors); $i++): ?>
 		<?php for($j = 0; $j < count($behaviors[$i]['PatternBehaviorRelations']); $j++): ?>
-		link(<?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['pattern_behavior_name']);?>, <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['behavior_relation_name']);?>,  '<?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['order']);?>: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['guard']);?> <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['action']);?>', [{x: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['position_x']);?>, y: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['position_y']);?>}], <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['id']);?>);
+		link(<?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['pattern_behavior_name']);?>, <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['pattern_behavior_relation_name']);?>,  '<?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['order']);?>: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['guard']);?> <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['action']);?>', [{x: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['position_x']);?>, y: <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['position_y']);?>}], <?php echo h($behaviors[$i]['PatternBehaviorRelations'][$j]['id']);?>);
 	<?php endfor; ?>
 <?php endfor; ?>
 
