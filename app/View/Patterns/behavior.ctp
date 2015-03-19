@@ -234,19 +234,19 @@ $("#add_action").click(function(){
                   </tr>
                 </thead>
                 <tbody class="add_action">
-                  <?php if(!empty($behaviors_data['BehaviorRelations']['id'])): ?>
-                    <?php for($i = 0; $i < count($behaviors_data['BehaviorRelations']['id']); $i++): ?>
+                  <?php if(!empty($behaviors_data['PatternBehaviorRelations']['id'])): ?>
+                    <?php for($i = 0; $i < count($behaviors_data['PatternBehaviorRelations']['id']); $i++): ?>
                       <tr>
-                        <?php echo $this->Form->hidden('BehaviorRelations.id.'.$i,  array('label' => false, 'div' => false, 'id' => false)); ?>
-                        <td><?php echo $this->Form->input('BehaviorRelations.behavior_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
+                        <?php echo $this->Form->hidden('PatternBehaviorRelations.id.'.$i,  array('label' => false, 'div' => false, 'id' => false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehaviorRelations.pattern_behavior_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
                         </td>
-                        <td><?php echo $this->Form->input('BehaviorRelations.behavior_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehaviorRelations.behavior_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'select', 'class' => 'form-control','options' => $behabior_relation,  'placeholder' => 'AttributeName', 'error'=>false)); ?>
                         </td>
-                        <td><?php echo $this->Form->input('BehaviorRelations.guard.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => '[Guard]', 'error'=>false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehaviorRelations.guard.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => '[Guard]', 'error'=>false)); ?>
                         </td>
-                        <td><?php echo $this->Form->input('BehaviorRelations.action.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Action', 'error'=>false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehaviorRelations.action.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Action', 'error'=>false)); ?>
                         </td>
-                        <td><?php echo $this->Form->input('BehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
+                        <td><?php echo $this->Form->input('PatternBehaviorRelations.order.'.$i, array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control',  'placeholder' => 'Order', 'error'=>false)); ?>
                         </td>
                         <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/action_delete/<?php echo $behaviors_data['BehaviorRelations']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
                         </td>
