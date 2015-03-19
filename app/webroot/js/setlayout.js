@@ -194,7 +194,8 @@ $(window).load(function() {
     });
 });
 
-(window).load(function() {
+
+$(window).load(function() {
     //Ajaxの設定
 
     $("#setPatternBehavior").click(function(){
