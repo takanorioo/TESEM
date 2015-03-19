@@ -37,7 +37,7 @@
   
 
 
-  <div class="row">
+  
 
     <!-- Public -->
     <div class="row">
@@ -65,9 +65,9 @@
         <?php endif; ?>
       </div>
     </div>
-  </div>
 
   <!-- Own -->
+  <div class="row">
   <div class="col-md-10">
     <div style="float: right;">
       <h1 style="padding-left: 280px;"><a href="#" class ="btn btn-primary" data-toggle="modal" data-target="#myModal">Create New Project</a></h1>
