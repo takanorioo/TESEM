@@ -198,6 +198,21 @@ class PatternsController extends AppController
     }
 
     /**
+     * structure
+     * @param:
+     * @author: T.Kobashi
+     * @since: 1.0.0
+     */
+    public function structre ($pattern_id = null)
+    {
+        $this->Session->write('Pattern.id', $pattern_id);
+
+        $pattern = $this->Pattern->getPattern($pattern_id);
+        $this->set('pattern', $pattern);
+
+    }
+
+    /**
      * add
      * @param:
      * @author: T.Kobashi
