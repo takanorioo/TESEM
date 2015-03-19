@@ -42,7 +42,7 @@ class ProjectsController extends AppController
         $user = $this->getUser();
 
         //Public Project
-        $projects = $this->Project->getPublicProjects();
+        $public_projects = $this->Project->getPublicProjects();
         $this->set('public_projects', $public_projects);
 
         //Your Project
