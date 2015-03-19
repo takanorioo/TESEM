@@ -62,17 +62,7 @@ $("#add_action").click(function(){
 </script>
 
 
-<div style="float: right;">
-	<img src="<?php echo FULL_BASE_URL; ?>/img//kobashi.jpg" style="width: 80px;margin-right: 10px;" class="img-thumbnail">
-	<div style="float: right;margin-top: 10px;width: 180px;">
-		<span>Contributer :</span><br>
-		<span>Takanori Kobashi</span><br>
-		<span>Created : 2014/5/12</span>
-	</div>
-</div>
-
-
-<h3 style="padding-bottom: 20px;">Selected Countermeasure </h3>
+<h3 style="padding-bottom: 20px;">Security Design Pattern </h3>
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo $pattern_id; ?>">Structure</a></li>
