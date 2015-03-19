@@ -11,7 +11,7 @@ class Project extends AppModel {
     {
         $result = $this->find('all', array(
             'conditions' => array(
-                'Project.type' => '0'
+                'Project.type' => '2'
 
             )
         ));
