@@ -12,7 +12,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="login-panel panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Facebook Login</h3>
+            <h3 class="panel-title">Twitter Login</h3>
           </div>
           <div class="panel-body" >
             <div class="control-group" style="text-align: center;">
