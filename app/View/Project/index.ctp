@@ -79,7 +79,7 @@
           <tr>
             <th>Project Name</th>
             <th>State</th>
-            <th>Menber</th>
+            <th>Member</th>
             <th>Invite member</th>
             <th>Delete</th>
           </tr>
