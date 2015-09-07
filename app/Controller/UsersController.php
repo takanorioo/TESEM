@@ -29,6 +29,7 @@ class UsersController extends AppController
         parent::beforeFilter();
         $this->Auth->allow(); //認証なしで入れるページ
         $this->Auth->deny('profile');
+	$this->set("title_for_layout","TESEM");
     }
 
      /**

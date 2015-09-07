@@ -67,7 +67,7 @@ $("#add_action").click(function(){
 <ul class="nav nav-tabs" role="tablist" id="myTab">
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo $pattern_id; ?>">Structure</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/behavior/<?php echo $pattern_id; ?>">Behabior</a></li>
-  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/elements/<?php echo $pattern_id; ?>">Elements</a></li>
+  <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/elements_list/<?php echo $pattern_id; ?>">Elements</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/requiremetns/<?php echo $pattern_id; ?>">Pattern Requiremetns</a></li>
   <li><a href="<?php echo FULL_BASE_URL; ?>/patterns/ocl/<?php echo $pattern_id; ?>">OCL</a></li>
 </ul>
@@ -105,7 +105,8 @@ $("#add_action").click(function(){
 
 			function state(x, y, label, id) {
 
-				var cell = new joint.shapes.fsa.State({
+//				var cell = new joint.shapes.fsa.State({
+				var cell = new joint.shapes.basic.Rect({
 					position: { x: x, y: y },
 					size: { width: 200, height: 50 },
 					attrs: { text : { text: label || '', 'font-weight': id}},

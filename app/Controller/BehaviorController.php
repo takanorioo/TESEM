@@ -25,6 +25,7 @@ class BehaviorController extends AppController
     {
         parent::beforeFilter();
         $this->Auth->deny();
+	$this->set("title_for_layout","TESEM");
     }
 
     /**

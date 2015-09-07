@@ -17,7 +17,7 @@
               </aside>
               <article>
                 <h3><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo h($patterns[$i]['Pattern']['id']);?>"><?php echo h($patterns[$i]['Pattern']['name']);?></a></h3>
-                <p style="float: right; padding: 10px;margin-top: -36px;color: gray;">created by : <?php echo h($patterns[$i]['User']['first_name']);?> <?php echo h($patterns[$i]['User']['last_name']);?></p>
+                <p style="float: right; padding: 10px;margin-top: -36px;color: gray;">created by : <?php echo h($patterns[$i]['User']['first_name']);?> <?php echo h($patterns[$i]['User']['last_name']);?>　<a href="<?php echo FULL_BASE_URL; ?>/patterns/delete/<?php echo h($patterns[$i]['Pattern']['id']);?>"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a></p>
                 <time><a href="<?php echo FULL_BASE_URL; ?>/patterns/structure/<?php echo h($patterns[$i]['Pattern']['id']);?>">Created : <?php echo h($patterns[$i]['Pattern']['created']);?></a></time>
               </article>
             </section>

@@ -1,19 +1,38 @@
-<script type="text/javascript">
-	
+<div style="float: right;">
+	<h1 style="padding-left: 140px;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/target/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Select Security Design Patterns</a></h1>
+	<h1 style="margin-top: -44px;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/bind/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Bind Elements</a></h1>
+</div>
 
-// masony.jsを使って画像をレンガ状にグリッドする処理
-$(window).load(function(){
-	$('.row').masonry({
-		itemSelector: '.col-md-4',
-	});
-});
+<h3 style="padding-top: 50px;">▶ Selected Patterns of <span class = "red"> "<?php echo h($method['Method']['name']);?>"</span> process</h3>
 
+<?php if (!empty($security_design_requirement)): ?>
+<table class="table table-bordered">
+	<thead>
+		<tr style="background: lightgray;">
+			<th>#</th>
+			<td>Patterns</td>
+			<td style="width: 230px;">Delete from Selected Pattern</td>
+		</tr>
+	</thead>
+	<tbody>
+		<?php for($i = 0; $i < count($security_design_requirement); $i++): ?>
+			<tr>
+				<td><?php echo $i + 1;?></td>
+				<td><?php echo h($security_design_requirement[$i]['Pattern']['name']);?></td>
+				<td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/delete/<?php echo h($security_design_requirement[$i]['SecurityDesignRequirement']['id']);?>" onclick="return confirm('Are You Sure ?');"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
+			</tr>	
+		<?php endfor; ?>
 
-</script>
+	</tbody>
+</table>
+<?php else: ?>
+	Please Select Security Implementation Patterns
+<?php endif; ?>
 
-<div>
+<h3>▶ Security Implementation Requirements of <span class = "red"> "<?php echo $method['Method']['name'];?>"</span> process</h3>
 
-	<h3>▶ Security Design Requirements of <span class = "red"> "<?php echo $method['Method']['name'];?>"</span> process</h3>
+<?php if (!empty($security_design_requirement[0]['PatternBind'])): ?>
+
 	<table class="table table-bordered">
 		<thead>
 			<tr style="background: lightgray;">
@@ -129,56 +148,13 @@ $(window).load(function(){
 			</tr>
 		</tbody>
 	</table>
+
+<div style="float: right;">
+	<h1 style="padding-left: 160px;"><a href="<?php echo FULL_BASE_URL; ?>/Element/sir_testcasedata/<?php echo h($method['Method']['id']);?>" class ="btn btn-primary">Create Test Script</a></h1>
 </div>
 
 
-<?php echo $this->Form->create('Label', array('id' => false)); ?>
-<div class="row"style = "padding-top:40px">
-	<?php for($i = 0; $i < count($elements); $i++): ?>
-		<?php if(!in_array($elements[$i]['Label']['id'], $non_factor)): ?>
-			<?php if(!empty($elements[$i]['Attribute'])): ?>
-				<div class="col-md-4 well element">
-					<?php echo h($elements[$i]['Label']['name']);?>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Name (Type)</th>
-								<th>Test Case</th>
-							</tr>
-						</thead>
-						<?php for($j = 0; $j < count($elements[$i]['Attribute']); $j++): ?>
-							<tbody>
-								<tr>
-									<td><?php echo h($elements[$i]['Attribute'][$j]['name']);?>  (<?php echo $TYPE[$elements[$i]['Attribute'][$j]['type']];?>)</td>
-									<?php if($elements[$i]['Attribute'][$j]['type'] == 0): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'select', 'options' => $INTCASE, 'class' => 'form-control', 'error'=>false)); ?>
-										</td>
-									<?php elseif($elements[$i]['Attribute'][$j]['type'] == 1): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'text', 'class' => 'form-control', 'error'=>false)); ?>
-										</td>
-									<?php elseif($elements[$i]['Attribute'][$j]['type'] == 2): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'select', 'options' => $BOOLCASE, 'class' => 'form-control', 'error'=>false)); ?>
-										</td>	
-									<?php else: ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'text', 'class' => 'form-control date','placeholder' => 'Date',  'error'=>false)); ?>
-										</td>
-									<?php endif; ?>
-								</tr>
-							</tbody>
-						<?php endfor; ?>
-					</table>
-				</div>
-			<?php endif; ?>
-		<?php endif; ?>
-	<?php endfor; ?>
-</div>
-<div class="c" style=" padding-top: 40px;padding-bottom: 40px;">
-	<p style="text-align: center;padding: 20px;">
-		<?php
-		echo $this->Form->submit('Crate Test Script', array('name' => 'executeTest', 'div' => false, 'class' => 'btn btn-danger col-md-12'));
-		?>
-	</p>
-	<input type="hidden" name="token" value="<?php echo session_id();?>">
-	<input type="hidden" name="executeTest" value="executeTest">
-</div>
-<?php echo $this->Form->end(); ?>
+<?php else: ?>
+	Please bind Pattern elemetns
+<?php endif; ?>
+

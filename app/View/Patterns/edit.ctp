@@ -33,8 +33,8 @@
 	$(function() {
 		var option_relation = '<option value="">----</option>';
 		
-		<?php for($i = 0; $i < count($option_relation); $i++): ?>
-		option_relation  += '<option value=<?php echo h($option_relation[$i]['id']);?>><?php echo h($option_relation[$i]['name']);?></option>'
+		<?php for($i = 0; $i < count($pattern_elements); $i++): ?>
+		option_relation  += '<option value=<?php echo h($pattern_elements[$i]['PatternElement']['id']);?>><?php echo h($pattern_elements[$i]['PatternElement']['element']);?></option>'
 	<?php endfor; ?>
 
 	var count = <?php echo $relation_count;?>;
@@ -165,7 +165,7 @@
 								<?php for($i = 0; $i < count($pattern_element['PatternRelation']['pattern_element_relation_id']); $i++): ?>
 									<tr>
 										<?php echo $this->Form->hidden('PatternRelation.id.'.$i, array('label' => false, 'div' => false, 'id' => false)); ?>
-										<td><?php echo $this->Form->input('PatternRelation.pattern_element_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => false, 'type' => 'select', 'options' => $relation, 'class' => 'form-control', 'empty' => '----', 'error'=>false)); ?>
+										<td><?php echo $this->Form->input('PatternRelation.pattern_element_relation_id.'.$i, array('label' => false, 'div' => false, 'id' => false, 'type' => 'select', 'options' => $elements_list, 'class' => 'form-control', 'empty' => '----', 'error'=>false)); ?>
 										</td>
 										<td><a href="<?php echo FULL_BASE_URL; ?>/patterns/relation_delete/<?php echo $pattern_element['PatternRelation']['id'][$i];?>" onclick="return confirm('Are You Sure ?');" style="margin: 10px;font-size: 20px;color: red;"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a>
 										</td>

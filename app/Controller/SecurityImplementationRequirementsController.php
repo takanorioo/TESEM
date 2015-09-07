@@ -8,9 +8,9 @@
  * @copyright
  */
 App::uses('AppController', 'Controller');
-class SecurityDesignRequirementsController extends AppController
+class SecurityImplementationRequirementsController extends AppController
 {
-    public $name = 'SecurityDesignRequirements';
+    public $name = 'SecurityImplementationRequirements';
     public $uses = array(
         'SecurityDesignRequirement',
         'Method',

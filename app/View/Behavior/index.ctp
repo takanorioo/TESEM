@@ -96,10 +96,14 @@ echo $this->Html->script(array('joint.shapes.erd'));
 
 	function state(x, y, label, id) {
 
-		var cell = new joint.shapes.fsa.State({
+//		var cell = new joint.shapes.fsa.State({
+		var cell = new joint.shapes.basic.Rect({
 			position: { x: x, y: y },
 			size: { width: 200, height: 50 },
-			attrs: { text : { text: label || '', 'font-weight': id}},
+			attrs: { text : { text: label || '', 'font-weight': id
+//, style : {'margin': '0 auto', 'text-align': 'center', 'display': 'inline-block'}
+//, style : {' position: absolute'}
+}},
 
 		});
 		graph.addCell(cell);

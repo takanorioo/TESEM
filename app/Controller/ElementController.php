@@ -21,6 +21,7 @@ class ElementController extends AppController
         'Project',
         'SecurityRequirement',
         'SecurityDesignRequirement',
+        'SecurityImplementationRequirement',
         'TargetFunction',
         'Behavior',
         'BehaviorRelation'
@@ -38,6 +39,7 @@ class ElementController extends AppController
     {
         parent::beforeFilter();
         $this->Auth->deny();
+	$this->set("title_for_layout","TESEM");
     }
 
 
@@ -602,6 +604,119 @@ class ElementController extends AppController
         }
         $this->redirect(array('controller' => 'Element', 'action' => 'sr_testcase', $method_id));
     }
+
+    /**
+     * sir_testcasedata
+     * @param:
+     * @author: M.Yoshizawa
+     * @since: 1.0.0
+     */
+    public function sir_testcasedata($method_id = null)
+    {
+        //不正アクセス
+        if (!isset($method_id)) {
+            throw new BadRequestException();
+        }
+
+        if(!empty($this->request->query['attribute'])) {
+
+            $attribute = $this->request->query['attribute'];
+
+            for($i = 0; $i < count($attribute); $i++) {
+
+                //初期化
+                $data = array();
+                $attribute_detail = array();
+
+                $attribute_detail = explode(".", $attribute[$i]);
+
+                $attribute_id = $this->Attribute->getAttributeIdByName($attribute_detail[1]);
+
+                if(empty($attribute_id)) {
+
+                    // トランザクション処理
+                    $this->Attribute->create();
+                    $this->Attribute->begin();
+
+
+                    $data['Attribute']['type'] = $attribute_detail[2];
+                    $data['Attribute']['name'] = $attribute_detail[1];
+                    $data['Attribute']['label_id'] = $attribute_detail[0];
+
+                    if (!$this->Attribute->save($data['Attribute'],false,array('type','name','label_id'))) {
+                        $this->Attribute->rollback();
+                        throw new InternalErrorException();
+                    }
+                    $this->Attribute->commit();
+                }
+            }
+        }
+        $this->redirect(array('controller' => 'Element', 'action' => 'sir_testcase', $method_id));
+    }
+
+    /**
+     * sir_testcase
+     * @param:
+     * @author: M.Yoshizawa
+     * @since: 1.0.0
+         */
+    public function sir_testcase($method_id = null) 
+    {
+        //プロジェクトIDの取得   
+        $project_id = $this->Session->read('Project.id');
+
+        //不正アクセス
+        if (!isset($method_id)) {
+            throw new BadRequestException();
+        }
+
+        //Method情報を取得
+        $method = $this->Method->getMethod($method_id);
+        $this->set('method', $method);
+
+        //Method情報を取得
+        $security_design_requirement = $this->SecurityDesignRequirement->getSecurityDesignRequirement($method_id);
+        $this->set('security_design_requirement', $security_design_requirement);
+
+        $non_factor = array();
+        for($t = 0; $t < count($security_design_requirement); $t++) {
+            if($security_design_requirement[$t]['Pattern']['id'] == 1) {
+                $non_factor[] = $security_design_requirement[$t]['PatternBind'][4]['Label']['id'];
+            }
+            if($security_design_requirement[$t]['Pattern']['id'] == 2) {
+                $non_factor[] = $security_design_requirement[$t]['PatternBind'][1]['Label']['id'];
+            }
+        }
+        $this->set('non_factor', $non_factor);
+
+        $security_design_requirement_count = pow (2, count($security_design_requirement));
+        $this->set('security_design_requirement_count', $security_design_requirement_count);
+
+
+        $td_rowspan = count($security_design_requirement) * 2 + 2;
+        $this->set('td_rowspan', $td_rowspan);
+
+
+        //テストの実行
+        if (!empty($this->request->data['executeTest'])) {
+
+            $label = $this->Method->getLabel($method_id);
+            $this->set('label', $label);
+
+            $attributes = $this->request->data['Attribute']['name'];
+
+            $attribute_ids = array_keys($attributes);
+            for($i = 0; $i < count($attribute_ids); $i++) {
+                $attribute_name = $this->Attribute->getAttributeName($attribute_ids[$i]);
+                $attributes[$attribute_ids[$i]]['name'] = $attribute_name['Label']['name'];
+                $attributes[$attribute_ids[$i]]['attribute_name'] = $attribute_name['Attribute']['name'];
+            }
+            $this->set('attributes', $attributes);
+            $this->render('sir_testscript');
+        }
+    }
+
+
 
     /**
      * delete

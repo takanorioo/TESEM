@@ -10,6 +10,7 @@
       <th>Behavior</th>
       <th>Security Requirements</th>
       <th>Security Design Requirements</th>
+      <th>Security Design Requirements</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -21,7 +22,8 @@
         <td><?php echo h($target_methods['name'][$i]);?></td>
         <td><a href="<?php echo FULL_BASE_URL; ?>/behavior/index/<?php echo h($target_methods['id'][$i]);?>" class ="btn btn-primary">Bahavior</a></td>
         <td><a href="<?php echo FULL_BASE_URL; ?>/security_requirements/table/<?php echo h($target_methods['id'][$i]);?>" class ="btn btn-info">Show Security Requirements</a></td>
-        <td><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/table/<?php echo h($target_methods['id'][$i]);?>" class ="btn btn-warning">Show Security Design Requirements</a></td>
+        <td><a href="<?php echo FULL_BASE_URL; ?>/security_design_requirements/table/<?php echo h($target_methods['id'][$i]);?>" class ="btn btn-warning">Show Security Design<br /> Requirements</a></td>
+<td><a href="<?php echo FULL_BASE_URL; ?>/security_implementation_requirements/table/<?php echo h($target_methods['id'][$i]);?>" class ="btn btn-success">Show Security Implementation<br /> Requirements</a></td>
         <td style="text-align: center;"><a href="<?php echo FULL_BASE_URL; ?>/security_requirements/delete/<?php echo h($target_methods[$i]);?>" onclick="return confirm('Are You Sure ?');"><img src="<?php echo FULL_BASE_URL; ?>/img/delete_icon.png" style="margin-top: 5px;"></a></td>
       </tr>
     <?php endfor; ?>

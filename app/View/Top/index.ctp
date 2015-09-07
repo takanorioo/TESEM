@@ -73,6 +73,9 @@ var all = [
 
 
 <div id="tabcontent">
+	<div class="row" style="padding-top: 100px;position: absolute;right: 50px;">
+			<input id="input" type="button" name ="input" class ="btn btn-primary" value="Input XML" style="font-size: 20px;" onclick="location.href='/projects/input_xml'">
+	</div>
 	<div class="row" style="padding-top: 40px;position: absolute;right: 50px;">
 			<input id="set" type="button" name ="set" class ="btn btn-primary" value="Set Layout" style="font-size: 20px;">
 	</div>
