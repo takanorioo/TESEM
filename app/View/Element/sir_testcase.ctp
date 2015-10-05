@@ -131,54 +131,68 @@ $(window).load(function(){
 	</table>
 </div>
 
-
+<!--
 <?php echo $this->Form->create('Label', array('id' => false)); ?>
-<div class="row"style = "padding-top:40px">
-	<?php for($i = 0; $i < count($elements); $i++): ?>
-		<?php if(!in_array($elements[$i]['Label']['id'], $non_factor)): ?>
-			<?php if(!empty($elements[$i]['Attribute'])): ?>
-				<div class="col-md-4 well element">
-					<?php echo h($elements[$i]['Label']['name']);?>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Name (Type)</th>
-								<th>Test Case</th>
-							</tr>
-						</thead>
-						<?php for($j = 0; $j < count($elements[$i]['Attribute']); $j++): ?>
-							<tbody>
-								<tr>
-									<td><?php echo h($elements[$i]['Attribute'][$j]['name']);?>  (<?php echo $TYPE[$elements[$i]['Attribute'][$j]['type']];?>)</td>
-									<?php if($elements[$i]['Attribute'][$j]['type'] == 0): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'select', 'options' => $INTCASE, 'class' => 'form-control', 'error'=>false)); ?>
-										</td>
-									<?php elseif($elements[$i]['Attribute'][$j]['type'] == 1): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'text', 'class' => 'form-control', 'error'=>false)); ?>
-										</td>
-									<?php elseif($elements[$i]['Attribute'][$j]['type'] == 2): ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'select', 'options' => $BOOLCASE, 'class' => 'form-control', 'error'=>false)); ?>
-										</td>	
-									<?php else: ?>
-										<td><?php echo $this->Form->input('Attribute.name.'.$elements[$i]['Attribute'][$j]['id'].'.testcase', array('label' => false, 'div' => false, 'id' => $elements[$i]['Attribute'][$j]['id'], 'type' => 'text', 'class' => 'form-control date','placeholder' => 'Date',  'error'=>false)); ?>
-										</td>
-									<?php endif; ?>
-								</tr>
-							</tbody>
-						<?php endfor; ?>
-					</table>
-				</div>
-			<?php endif; ?>
-		<?php endif; ?>
-	<?php endfor; ?>
+-->
+<?php echo $this->Form->create('Element', array('id' => false, 'enctype' => 'multipart/form-data', 'type'=>'file')); ?>
+<div>
+        <div>
+                <div>
+                        <div class="row" style = "padding-top:40px">
+                                <!--<div class="col-md-8 well">-->
+                                <div class="well">
+							        <table class="table table-hover">
+                                                <thead>
+														<?php ?>
+                                                        <tr>
+                                                                <th>Pattern</th>
+                                                                <th>Test Case</th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+														<?php for($i=0;$i<$sdr_count;$i++): ?>
+														<tr>
+                                                                <td><?php echo $security_design_requirement[$i]['Pattern']['name'];?></td>
+																<td><div class="col-s-3">
+																<?php for($n=0;$n<count($input_field[$i]);$n++): ?>
+	                                                                <?php echo $input_field[$i][$n];?>
+																<?php endfor; ?>
+																</div></td>
+                                                        </tr>
+														<?php endfor; ?>
+                                                </tbody>
+                                        </table>
+
+                                </div>
+
+                                <div class="well">
+                                        <?php echo $this->Form->input('Input Selenium Test Case', array('type'=>'file' )); ?>
+                                </div>
+                                <div class="well">
+                                        <table class="table table-hover">
+                                                <thead>
+                                                        <tr>
+                                                                <th>Temporary File Path</th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                        <tr>
+                                                                <td><?php echo $this->Form->input('Temp.path', array('label' => false, 'div' => false, 'id' => '', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'File Path(e.g. C:\tmp.txt)', 'error'=>false)); ?></td>
+                                                        </tr>
+                                                </tbody>
+                                        </table>
+                                </div>
+                                <div class="col-md-12">
+                                        <p style="text-align: center;">
+                                                <?php
+						echo $this->Form->submit('Crate Test Script', array('name' => 'executeTest', 'div' => false, 'class' => 'btn btn-danger col-md-12'));
+                                                ?>
+                                        </p>
+                                        <input type="hidden" name="token" value="<?php echo session_id();?>">
+					<input type="hidden" name="executeTest" value="executeTest">
+                                </div>
+                                <?php echo $this->Form->end(); ?>
+                        </div>
+                </div>
+        </div>
 </div>
-<div class="c" style=" padding-top: 40px;padding-bottom: 40px;">
-	<p style="text-align: center;padding: 20px;">
-		<?php
-		echo $this->Form->submit('Crate Test Script', array('name' => 'executeTest', 'div' => false, 'class' => 'btn btn-danger col-md-12'));
-		?>
-	</p>
-	<input type="hidden" name="token" value="<?php echo session_id();?>">
-	<input type="hidden" name="executeTest" value="executeTest">
-</div>
-<?php echo $this->Form->end(); ?>

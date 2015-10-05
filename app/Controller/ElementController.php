@@ -18,6 +18,7 @@ class ElementController extends AppController
         'Method',
         'Countermeasure',
         'Pattern',
+        'PatternElement',
         'Project',
         'SecurityRequirement',
         'SecurityDesignRequirement',
@@ -28,6 +29,7 @@ class ElementController extends AppController
         );
     public $helpers = array('Html', 'Form');
     public $layout = 'base';
+	public $components = array("SecurityImplementation");
 
     /**
      * beforeFilter
@@ -677,17 +679,25 @@ class ElementController extends AppController
         //Method情報を取得
         $security_design_requirement = $this->SecurityDesignRequirement->getSecurityDesignRequirement($method_id);
         $this->set('security_design_requirement', $security_design_requirement);
-
         $non_factor = array();
-        for($t = 0; $t < count($security_design_requirement); $t++) {
+        $input_field = array();
+		$sdr_count = count($security_design_requirement);
+        for($t = 0; $t < $sdr_count; $t++) {
+			$test_case_value = !empty($this->request->data['field']) ? $this->request->data['field'] : "";
             if($security_design_requirement[$t]['Pattern']['id'] == 1) {
                 $non_factor[] = $security_design_requirement[$t]['PatternBind'][4]['Label']['id'];
             }
             if($security_design_requirement[$t]['Pattern']['id'] == 2) {
                 $non_factor[] = $security_design_requirement[$t]['PatternBind'][1]['Label']['id'];
             }
+			$input_field[] = $this->SecurityImplementation->inputPatternField($security_design_requirement[$t]['Pattern']['id'], $test_case_value);
+
+			$key_element[] = $this->PatternElement->getKeyPatternElement($security_design_requirement[$t]['Pattern']['id']);
+
         }
         $this->set('non_factor', $non_factor);
+        $this->set('input_field', $input_field);
+        $this->set('sdr_count', $sdr_count);
 
         $security_design_requirement_count = pow (2, count($security_design_requirement));
         $this->set('security_design_requirement_count', $security_design_requirement_count);
@@ -698,20 +708,39 @@ class ElementController extends AppController
 
 
         //テストの実行
-        if (!empty($this->request->data['executeTest'])) {
+        if (!empty($this->request->data['executeTest'])&&!empty($this->request->data['Element']['Input Selenium Test Case']['tmp_name'])) {
 
             $label = $this->Method->getLabel($method_id);
             $this->set('label', $label);
 
-            $attributes = $this->request->data['Attribute']['name'];
+			$tmp_path = $this->request->data['Temp']['path'];
+			$tmp_name = $this->request->data['Element']['Input Selenium Test Case']['tmp_name'];
+			$input_testcase = file_get_contents($tmp_name);
+			for($i=0;$i<$sdr_count;$i++){
+				$bind_count[] = $security_design_requirement[$i]['PatternBind'];
+			}
 
-            $attribute_ids = array_keys($attributes);
-            for($i = 0; $i < count($attribute_ids); $i++) {
-                $attribute_name = $this->Attribute->getAttributeName($attribute_ids[$i]);
-                $attributes[$attribute_ids[$i]]['name'] = $attribute_name['Label']['name'];
-                $attributes[$attribute_ids[$i]]['attribute_name'] = $attribute_name['Attribute']['name'];
-            }
-            $this->set('attributes', $attributes);
+			for($i=0;$i<$sdr_count;$i++){
+
+				$pattern_id = $security_design_requirement[$i]['Pattern']['id'];
+				$pattern_info[$i]["pattern_id"] = $pattern_id;
+				$pattern_info[$i]["check_temporary"] = $this->SecurityImplementation->createCheckTemporary(preg_replace('/(\s|　)/',"",$security_design_requirement[$i]["Pattern"]["name"]));
+				$pattern_info[$i]["pointcut_name"] = preg_replace('/(\s|　)/',"",$security_design_requirement[$i]["Pattern"]["name"]);
+				// セキュリティパターンでスター(仮)フラグを持ったメソッドのクラス
+				$pattern_info[$i]["class_name"] = $key_element[$i]['PatternElement']['element'];
+				// セキュリティパターンでスター(仮)フラグを持ったメソッド
+				$pattern_info[$i]["method_name"] = $key_element[$i]['PatternMethod']['name'];
+				$pattern_info[$i]["true_field"] = $this->SecurityImplementation->getTrueField($test_case_value[$pattern_id]);
+				$pattern_info[$i]["false_field"] = $this->SecurityImplementation->getFalseField($test_case_value[$pattern_id]);
+				$pattern_info[$i]["Pattern"]["name"] = $security_design_requirement[$i]['Pattern']['name'];
+
+			}
+
+
+			$output_testcase = $this->SecurityImplementation->createTestCase($pattern_info,$input_testcase,$tmp_path);
+			$output_aspectj = $this->SecurityImplementation->createAspectj($pattern_info, $tmp_path);
+            $this->set('output_testcase', $output_testcase);
+            $this->set('output_aspectj', $output_aspectj);
             $this->render('sir_testscript');
         }
     }

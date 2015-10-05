@@ -45,4 +45,28 @@ class PatternElement extends AppModel {
         }
         return $result;
     }
+    public function getKeyPatternElement($pattern_id)
+    {
+        $result = $this->find('first', array(
+			'recursive' => -1,
+            'conditions' => array(
+				'and' => array(
+	                'PatternElement.pattern_id' => $pattern_id,
+	                'PatternElement.key_flag' => '1',
+				),
+			),
+        ));
+		$method = $this->PatternMethod->find('first', array(
+					'recursive' => -1,
+					'conditions' => array(
+						'and' => array(
+							'PatternMethod.pattern_element_id' => $result['PatternElement']['id'],
+							'PatternMethod.key_flag' => '1',
+							)
+						)
+					));
+		$result['PatternMethod'] = $method['PatternMethod'];
+		return $result;
+	}
+
 }
